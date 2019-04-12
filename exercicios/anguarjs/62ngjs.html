@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <main class="container" ng-controller="ctrl62">
+        <h3>62) Escrever um algoritmo para ler dois valores e uma das seguintes operações a serem executadas (codificadas da
+            seguinte forma: 1 – Adição, 2 – Subtração, 3 – Multiplicação e 4 – Divisão). Calcular e escrever o resultado
+            dessa operação sobre os dois valores lidos.</h3>
+
+        <form>
+            <div class="form-group">
+                <label for="n1">Valor 1</label>
+                <input type="number" class="form-control" ng-model="n1" name="n1">
+            </div>
+            <div class="form-group">
+                <label for="n2">Valor 2</label>
+                <input type="number" class="form-control" ng-model="n2" name="n2">
+            </div>
+            <div class="form-group">
+                <label for="opc">Operações</label>
+                <select class="form-control" id="opc" name="opc" ng-model="opc">
+                    <option value="1">adição</option>
+                    <option value="2">subtração</option>
+                    <option value="3">multiplicação</option>
+                    <option value="4">divisão</option>
+                </select>
+            </div>
+            <!-- <button class="btn btn-primary">Calcular</button> -->
+        </form>
+
+        <span ng-bind-html="operacao(n1, n2, opc)" ng-if="n1 && n2 && opc"></span>
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("ctrl62", function ($scope, $sce) {
+                $scope.operacao = function (v1, v2, o) {
+                    let texto = "";
+                    switch (o) {
+                        case '1':
+                            texto = '<p class="alert alert-success">' + v1 + ' + ' + v2 + ' = ' + (v1 + v2) + '</p>';
+                            break;
+                        case '2':
+                            texto = '<p class="alert alert-info">' + v1 + ' - ' + v2 + ' = ' + (v1 - v2) + '</p>';
+                            break;
+                        case '3':
+                            texto = '<p class="alert alert-primary">' + v1 + ' x ' + v2 + ' = ' + (v1 * v2) + '</p>';
+                            break;
+                        case '4':
+                            texto = '<p class="alert alert-warning">' + v1 + ' / ' + v2 + ' = ' + (v1 / v2) + '</p>';
+                            break;
+                        default:
+                            texto = '<p class="alert alert-danger"> Opção invalida </p>';
+                    }
+                    return $sce.trustAsHtml(texto);
+                }
+            });
+        </script>
+    </main>
+</body>
+
+</html>

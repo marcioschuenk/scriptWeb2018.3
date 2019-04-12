@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body ng-app="myApp" ng-controller="ctrl66">
+    <form action="">
+        <div class="form-group">
+            <label for="i1">Índice de poluição</label>
+            <input type="number" id="i1" class="form-control" ng-model="i1" name="i1">
+        </div>
+    </form>
+
+    <span class="alert alert-danger">{{ indice(i1) }}</span>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("ctrl66", function ($scope) {
+            $scope.indice = function (i1) {
+                if (i1 <= 0.25) {
+                    return "Ok"
+                }
+                if (i1 > 0.25 && i1 < 0.31) {
+
+                    return "indústrias do 1° grupo deve suspender atividades"
+                } if (i1 > 0.30 && i1 < 0.41) {
+
+                    return "indústrias do 1° e 2° grupo devem suspender atividades"
+                } if (i1 > 0.4)
+                    return "Todos os grupos devem suspender atividades"
+
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

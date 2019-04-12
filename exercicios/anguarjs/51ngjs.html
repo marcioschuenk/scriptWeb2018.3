@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="ctrlApp51">
+    <main class="container">
+
+        <h2>51) Elaborar um algoritmo em pseudocodigo que leia um número. Se positivo armazene-o em uma variável chamada “A”,se for negativo, em uma variável chamada “B”. No final mostrar o resultado das duas variáveis.</h2>
+
+        <div class="form-group">
+            <label for="">Digite um valor</label>
+            <input type="number" id="valor" class="form-control" ng-model="valor">
+        </div>
+        <!-- <button class="btn btn-primary" onclick="saida(valorAB())">OK</button> -->
+
+        <span id="saida" class="alert alert-success" ng-if="valor">{{ saida (valor) }}</span>
+        
+        <p class="alert alert-info" ng-if="valor && valor > 0"> A: {{valor}} e B: 0</p>
+        <p class="alert alert-danger" ng-if="valor && valor < 0"> A: 0 e B: {{valor}}</p>
+
+        <script>
+            var app = angular.module("myApp", []);
+            app.controller("ctrlApp51", function ($scope) {
+                $scope.saida = function (v) {
+                    let a = 0, b = 0;
+                    if (v > 0) {
+                        a = v;
+                    } else {
+                        b = v;
+                    }
+                    return "Valor de A: " + a + " - Valor de B: " + b;
+                }
+            });
+        </script>
+
+
+        <!-- <script>
+            function valorAB() {
+                let v = document.getElementById("valor").value;
+                let a = 0, b = 0;
+                if (v >= 0) {
+                    a = v;
+                } else {
+                    b = v;
+                }
+                return "<p>Valor de A: " + a + " <br>Valor de B: " + b + "</p>"
+            }
+            function saida(texto) {
+                document.getElementById("saida").innerHTML = texto;
+            }
+        </script> -->
+    </main>
+</body>
+
+</html>

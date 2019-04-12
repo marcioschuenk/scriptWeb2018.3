@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <main class="container">
+
+        <h4>57) Escrever um algoritmo para ler três valores inteiros e escrever na tela o maior e o menor deles. Considere que
+            todos os valores são diferentes.</h4>
+
+        <span id="saida"></span>
+
+        <form action="">
+            <div class="form-group">
+                <label for="">1º Valor </label>
+                <input type="number" id="v1" min="0" max="10" step="0.01" class="form-control" value="0" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="">2º Valor</label>
+                <input type="number" id="v2" min="0" max="10" step="0.01" class="form-control" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="">3º Valor</label>
+                <input type="number" id="v3" min="0" max="10" step="0.01" class="form-control" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="">4º Valor</label>
+                <input type="number" id="v4" min="0" max="10" step="0.01" class="form-control" value="0" required>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="saida(resultadoArray())">OK</button>
+        </form>
+
+        <script>
+            function resultado() {
+                var v1 = parseFloat(document.getElementById("v1").value);
+                var v2 = parseFloat(document.getElementById("v2").value);
+                var v3 = parseFloat(document.getElementById("v3").value);
+                let maior = 0, menor = 0;
+                if (v1 > v2) {
+                    maior = v1;
+                    menor = v2;
+                } else {
+                    maior = v2;
+                    menor = v1;
+                }
+                if (v3 > maior) {
+                    maior = v3;
+                }
+                if (v3 < menor) {
+                    menor = v3;
+                }
+                return "<p>Maior: " + maior + " - Menor: " + menor + "</p>";
+            }
+            function resultadoArray() {
+                let i = document.getElementsByTagName('input')
+                let valores = [];
+                for (let x = 0; x < i.length; x++) {
+                    valores[x] = parseFloat(i[x].value);
+                }
+                console.log(valores.sort(function (a, b) { return a - b }));
+                return "<p>Maior: " + valores[valores.length - 1] + " - Menor: " + valores[0] + "</p>";
+            }
+            function saida(texto) {
+                document.getElementById("saida").innerHTML = texto;
+            }
+        </script>
+    </main>
+</body>
+
+</html>
